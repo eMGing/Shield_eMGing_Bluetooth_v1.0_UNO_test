@@ -29,8 +29,12 @@
   */
 #include <SoftwareSerial.h>
 
-#define EMGING_RX 10    // corresponde al pin TX del Arduino
-#define EMGING_TX 8    // corresponde al pin RX del Arduino
+#define EMGING_RX 10    // corresponde al pin RX del Shield Bluetooth y TX del Arduino UNO/MEGA
+// PARA Arduino UNO
+//#define EMGING_TX 8    // corresponde al pin TX del Shield Bluetooth y RX del Arduino UNO
+// PARA Arduino MEGA
+#define EMGING_TX 11    // corresponde al pin TX del Shield Bluetooth y RX del Arduino MEGA
+                        // Se DEBERA PUENTEAR pin 8 con el PIN 11
 
 SoftwareSerial mySerial(EMGING_TX, EMGING_RX);
 
@@ -55,6 +59,7 @@ void loop() { // Loop de ejecución de programa
     c=mySerial.read();
     Serial.print(c);
   }
+  
   char c1;
   if (Serial.available()) {
     c1=Serial.read();
